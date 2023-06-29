@@ -1,0 +1,4 @@
+{
+    "plugins": ["@react-native"],
+    "extends": ["@salesforce/eslint-config-lwc/recommended"]
+}

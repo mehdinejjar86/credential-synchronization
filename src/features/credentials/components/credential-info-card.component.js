@@ -1,26 +1,24 @@
-import styled from "styled-components/native";
-import { StyleSheet, Text, Image } from "react-native";
-import { Card } from "react-native-paper";
+import certificate from "../../../../assets/certificate";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
-const CredentialCard = styled(Card)`
-  background-color: #dd9933;
-`;
-
-const Title = styled.Text`
-  padding: 5%;
-  font-size: 30px;
-`;
-
-const Credential = styled.Text`
-  padding: 5%;
-`;
+import {
+  CredentialCard,
+  CredentialIcon,
+  Info,
+} from "./credential-info-card.styles";
 
 export const CredentialInfoCard = ({ credential = {} }) => {
   const { key = "name", value = "myname" } = credential;
   return (
-    <CredentialCard elevation={5}>
-      <Title>{key}</Title>
-      <Credential>{value}</Credential>
-    </CredentialCard>
+    <Spacer position="bottom" size="large">
+      <CredentialCard elevation={5}>
+        <CredentialIcon xml={certificate} width={20} height={20} />
+        <Info>
+          <Text variant="label">{key}</Text>
+          <Text variant="caption">{value}</Text>
+        </Info>
+      </CredentialCard>
+    </Spacer>
   );
 };

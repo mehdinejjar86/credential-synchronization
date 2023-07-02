@@ -1,34 +1,34 @@
-import { StatusBar, SafeAreaView, Platform } from "react-native";
+import { StatusBar, SafeAreaView, Platform, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { CredentialInfoCard } from "../components/credential-info-card.component";
 import styled from "styled-components/native";
 
-const StatusBarHeight = Platform.OS === "android" ? StatusBar.currentHeight : 0;
+import { SafeArea } from "../../../components/utility/safe-area.component";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  margin-top: ${StatusBarHeight}px;
-`;
-
-const SearchBar = styled(Searchbar)`
-  background-color: #ffffff;
+const SearchBar = styled(Searchbar).attrs({
+  inputStyle: { fontFamily: "Lato_400Regular" },
+})`
+  background-color: ${(props) => props.theme.colors.ui.quaternary};
+  font-family: ${(props) => props.theme.fonts.heading};
 `;
 
 const SearchContainer = styled.View`
-  padding: 5%;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
-const CredentialListContainer = styled.View`
-  flex: 1;
-  padding: 5%;
-  background-color: #cccccc;
-`;
+const CredentialList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
 
 export const CredentialtScreen = () => {
   const os = Platform.OS;
 
   return (
     <SafeArea os={os}>
+      {}
       <SearchContainer>
         <SearchBar
           placeholder="Search for a credential"
@@ -36,9 +36,28 @@ export const CredentialtScreen = () => {
           iconColor="#171719"
         />
       </SearchContainer>
-      <CredentialListContainer>
-        <CredentialInfoCard />
-      </CredentialListContainer>
+
+      <CredentialList
+        data={[
+          { key: 1, value: "test" },
+          { key: 2 },
+          { key: 3 },
+          { key: 4 },
+          { key: 5 },
+          { key: 6 },
+          { key: 7 },
+          { key: 8 },
+          { key: 9 },
+          { key: 10 },
+          { key: 11 },
+          { key: 12 },
+          { key: 13 },
+          { key: 14 },
+        ]}
+        renderItem={() => <CredentialInfoCard />}
+        keyExtractor={(item) => item.key}
+        contentContainerStyle={{}}
+      ></CredentialList>
     </SafeArea>
   );
 };

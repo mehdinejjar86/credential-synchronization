@@ -1,9 +1,8 @@
 import { useState, createContext } from "react";
-
 import { loginRequest, registerRequest } from "./authentication.service";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const AuthenticationContext = createContext();
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);

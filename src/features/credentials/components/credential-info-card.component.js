@@ -9,7 +9,7 @@ import {
 } from "./credential-info-card.styles";
 
 export const CredentialInfoCard = ({ credential = {} }) => {
-  const { key = "name", value = "myname" } = credential;
+  const { key, value } = credential;
   return (
     <Spacer position="bottom" size="large">
       <CredentialCard elevation={5}>
